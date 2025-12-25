@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roberto Augusto | Editor de Vídeo Premium</title>
+    <title>Roberto Augusto | Editor de Vídeo Profissional</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <style>
         :root {
             --primary-color: #6366f1;
@@ -73,7 +75,7 @@
             border-radius: 5px;
         }
         
-        /* Header e Navegação - CORRIGIDO */
+        /* Header e Navegação */
         header {
             position: fixed;
             top: 0;
@@ -207,14 +209,14 @@
             color: transparent;
         }
         
-        /* Hero Section - CORRIGIDO para não ter overlap com header */
+        /* Hero Section */
         .hero {
             height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
-            padding-top: 100px; /* Adicionado padding para header fixo */
+            padding-top: 100px;
         }
         
         .hero-content {
@@ -624,7 +626,7 @@
         .modal-video-container {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%; /* Proporção 16:9 */
+            padding-bottom: 56.25%;
             height: 0;
         }
         
@@ -694,31 +696,6 @@
             background: var(--gradient);
             color: white;
             font-weight: 700;
-        }
-        
-        .channel-stats {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-top: 20px;
-        }
-        
-        .stat {
-            text-align: center;
-        }
-        
-        .stat-value {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .stat-label {
-            font-size: 0.9rem;
-            color: #94a3b8;
         }
         
         /* Seção Processo de Trabalho */
@@ -967,6 +944,29 @@
             font-size: 0.9rem;
         }
         
+        /* Mensagens de status do formulário */
+        .form-status {
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+        
+        .form-status.success {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            display: block;
+        }
+        
+        .form-status.error {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            display: block;
+        }
+        
         /* Responsividade */
         @media (max-width: 1200px) {
             .floating-3d {
@@ -1094,6 +1094,7 @@
         <div class="container">
             <nav class="navbar">
                 <a href="#" class="logo">
+                    Roberto Augusto<span class="logo-dot"></span>
                 </a>
                 
                 <div class="menu-toggle" id="menu-toggle">
@@ -1122,8 +1123,8 @@
         <div class="container">
             <div class="hero-content">
                 <h1>Roberto Augusto</h1>
-                <div class="hero-subtitle">Editor de Vídeo Freelancer & Motion Designer</div>
-                <p>Especialista em transformar ideias em narrativas visuais poderosas. Com uma abordagem personalizada e atenção aos detalhes, crio vídeos que não apenas impressionam, mas também geram resultados.</p>
+                <div class="hero-subtitle">Editor de Vídeo Profissional & Motion Designer</div>
+                <p>Com mais de 5 anos de experiência transformando ideias em narrativas visuais impactantes. Especializado em edição dinâmica, motion graphics e storytelling criativo para conteúdos que engajam e convertem.</p>
                 
                 <div class="hero-buttons">
                     <a href="#portfolio" class="cta-button">Ver Meu Trabalho</a>
@@ -1150,11 +1151,11 @@
     <!-- Seção Destaque -->
     <section class="highlight" id="highlight">
         <div class="container">
-            <h2 class="section-title">Por Que Me Escolher</h2>
+            <h2 class="section-title">Minha Experiência</h2>
             
             <div class="highlight-card">
-                <h3 style="font-size: 2.2rem; margin-bottom: 25px;">Freelancer Dedicado, Resultados Profissionais</h3>
-                <p>Como freelancer, ofereço uma abordagem personalizada e direta para cada projeto. Trabalho com você de perto para garantir que sua visão seja perfeitamente traduzida em vídeo, com a qualidade de um estúdio profissional e a flexibilidade de um colaborador independente.</p>
+                <h3 style="font-size: 2.2rem; margin-bottom: 25px;">5+ Anos Editando Conteúdo de Alta Qualidade</h3>
+                <p>Especializado em edição para YouTube, com foco em conteúdo entretenimento, gaming, opinião e curiosidades. Domínio completo do fluxo de trabalho desde a organização do material bruto até a entrega final otimizada para cada plataforma.</p>
             </div>
             
             <div class="highlight-grid">
@@ -1162,32 +1163,32 @@
                     <div class="highlight-icon">
                         <i class="fas fa-user-check"></i>
                     </div>
-                    <h3>Atendimento Personalizado</h3>
-                    <p>Você trabalha diretamente comigo, sem intermediários. Cada projeto recebe atenção individual e foco total.</p>
+                    <h3>Edição Dinâmica</h3>
+                    <p>Ritmo acelerado, cortes precisos e transições criativas que mantêm o espectador engajado do início ao fim.</p>
                 </div>
                 
                 <div class="highlight-item">
                     <div class="highlight-icon">
                         <i class="fas fa-rocket"></i>
                     </div>
-                    <h3>Entrega Rápida</h3>
-                    <p>Processo otimizado que prioriza prazos sem comprometer a qualidade. Entregas dentro do combinado.</p>
+                    <h3>Entrega Ágil</h3>
+                    <p>Processo otimizado que respeita prazos sem comprometer a qualidade. Comunicação constante durante todo o projeto.</p>
                 </div>
                 
                 <div class="highlight-item">
                     <div class="highlight-icon">
                         <i class="fas fa-medal"></i>
                     </div>
-                    <h3>Qualidade Premium</h3>
-                    <p>Padrão de qualidade superior com equipamentos de ponta e conhecimento técnico avançado.</p>
+                    <h3>Qualidade Técnica</h3>
+                    <p>Domínio avançado de color grading, mixagem de áudio, motion graphics e técnicas de engajamento visual.</p>
                 </div>
                 
                 <div class="highlight-item">
                     <div class="highlight-icon">
                         <i class="fas fa-handshake"></i>
                     </div>
-                    <h3>Flexibilidade Total</h3>
-                    <p>Adapto meu fluxo de trabalho às suas necessidades específicas. Revisões ilimitadas até sua satisfação.</p>
+                    <h3>Flexibilidade</h3>
+                    <p>Adapto meu estilo à identidade do seu canal. Revisões até sua total satisfação com o resultado final.</p>
                 </div>
             </div>
         </div>
@@ -1197,13 +1198,12 @@
     <section class="portfolio" id="portfolio">
         <div class="container">
             <div class="portfolio-header">
-                <h2 class="section-title">Meus Trabalhos em Vídeo</h2>
-                <p style="color: #94a3b8; max-width: 600px;">Clique em qualquer vídeo para assistir em tela cheia. Todos editados por mim com técnicas profissionais de edição, color grading e motion graphics.</p>
+                <h2 class="section-title">Meus Trabalhos</h2>
+                <p style="color: #94a3b8; max-width: 600px;">Clique em qualquer vídeo para assistir em tela cheia. Diferentes estilos de edição para diferentes tipos de conteúdo.</p>
             </div>
             
             <div class="video-grid" id="video-grid">
                 <!-- Os vídeos serão inseridos aqui via JavaScript -->
-                <!-- Cada item precisa apenas do ID do vídeo do YouTube -->
             </div>
         </div>
     </section>
@@ -1227,86 +1227,53 @@
     <section class="channels" id="channels">
         <div class="container">
             <h2 class="section-title">Canais Que Edito</h2>
-            <p style="font-size: 1.2rem; max-width: 800px; margin-bottom: 20px; color: #94a3b8;">Colaboro com diversos criadores de conteúdo e canais, ajudando a elevar a qualidade visual e engajamento através da edição profissional.</p>
+            <p style="font-size: 1.2rem; max-width: 800px; margin-bottom: 20px; color: #94a3b8;">Colaboração com criadores de conteúdo em diferentes nichos, aplicando técnicas específicas para cada tipo de audiência.</p>
             
             <div class="channels-grid">
                 <div class="channel-card">
                     <div class="channel-logo" style="background: linear-gradient(135deg, #FF0000, #CC0000);">
-                        <i class="fab fa-youtube"></i>
+                        <span style="font-size: 1.8rem; font-weight: bold;">OR</span>
                     </div>
-                    <h3>TechGuru Brasil</h3>
-                    <p>Canal de tecnologia com mais de 500k inscritos. Responsável pela edição de todos os vídeos desde 2022.</p>
-                    <div class="channel-stats">
-                        <div class="stat">
-                            <div class="stat-value">500K+</div>
-                            <div class="stat-label">Inscritos</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value">120+</div>
-                            <div class="stat-label">Vídeos Editados</div>
-                        </div>
+                    <h3>Otaku Ricão</h3>
+                    <p>Canal focado em conteúdo otaku e cultura pop. Edição com ritmo dinâmico e elementos visuais que complementam o tema.</p>
+                    <div style="margin-top: 20px;">
+                        <a href="https://www.youtube.com/c/OtakuRic%C3%A3o" target="_blank" class="secondary-button" style="padding: 10px 20px; font-size: 0.9rem;">
+                            <i class="fab fa-youtube"></i> Ver Canal
+                        </a>
                     </div>
                 </div>
                 
                 <div class="channel-card">
                     <div class="channel-logo" style="background: linear-gradient(135deg, #1DA1F2, #0d8bd9);">
-                        <i class="fab fa-twitter"></i>
+                        <span style="font-size: 1.8rem; font-weight: bold;">E12</span>
                     </div>
-                    <h3>GameVerse</h3>
-                    <p>Canal de gaming com foco em gameplays e reviews. Edição dinâmica com efeitos visuais imersivos.</p>
-                    <div class="channel-stats">
-                        <div class="stat">
-                            <div class="stat-value">250K+</div>
-                            <div class="stat-label">Inscritos</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value">85+</div>
-                            <div class="stat-label">Vídeos Editados</div>
-                        </div>
+                    <h3>Eto12</h3>
+                    <p>Conteúdo variado com foco em entretenimento. Atualmente responsável pela edição com estilo único e identidade visual própria.</p>
+                    <div style="margin-top: 20px;">
+                        <a href="https://www.youtube.com/@eto1254" target="_blank" class="secondary-button" style="padding: 10px 20px; font-size: 0.9rem;">
+                            <i class="fab fa-youtube"></i> Ver Canal
+                        </a>
                     </div>
                 </div>
                 
                 <div class="channel-card">
                     <div class="channel-logo" style="background: linear-gradient(135deg, #E4405F, #c13584);">
-                        <i class="fab fa-instagram"></i>
+                        <span style="font-size: 1.8rem; font-weight: bold;">H</span>
                     </div>
-                    <h3>Viagens & Aventuras</h3>
-                    <p>Canal de viagens com edição cinematográfica. Color grading profissional e transições criativas.</p>
-                    <div class="channel-stats">
-                        <div class="stat">
-                            <div class="stat-value">180K+</div>
-                            <div class="stat-label">Inscritos</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value">65+</div>
-                            <div class="stat-label">Vídeos Editados</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="channel-card">
-                    <div class="channel-logo" style="background: linear-gradient(135deg, #0A66C2, #004182);">
-                        <i class="fab fa-linkedin-in"></i>
-                    </div>
-                    <h3>Business Insights</h3>
-                    <p>Canal corporativo focado em negócios e empreendedorismo. Edição clean e profissional para conteúdo B2B.</p>
-                    <div class="channel-stats">
-                        <div class="stat">
-                            <div class="stat-value">95K+</div>
-                            <div class="stat-label">Inscritos</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value">45+</div>
-                            <div class="stat-label">Vídeos Editados</div>
-                        </div>
+                    <h3>Heto</h3>
+                    <p>Canal em crescimento com conteúdo diversificado. Edição focada em estabelecer identidade visual e engajar a audiência.</p>
+                    <div style="margin-top: 20px;">
+                        <a href="https://www.youtube.com/channel/UCxGgv-IoDUox8_CrPA91vpA" target="_blank" class="secondary-button" style="padding: 10px 20px; font-size: 0.9rem;">
+                            <i class="fab fa-youtube"></i> Ver Canal
+                        </a>
                     </div>
                 </div>
             </div>
             
             <div style="text-align: center; margin-top: 60px;">
-                <p style="color: #94a3b8; font-size: 1.1rem;">Interessado em ter seus vídeos editados com qualidade profissional?</p>
+                <p style="color: #94a3b8; font-size: 1.1rem;">Quer esse nível de qualidade para seus vídeos?</p>
                 <a href="#contact" class="cta-button" style="margin-top: 20px;">
-                    <i class="fas fa-video"></i> Quero Edição Profissional
+                    <i class="fas fa-video"></i> Contratar Editor
                 </a>
             </div>
         </div>
@@ -1315,46 +1282,46 @@
     <!-- Seção Processo de Trabalho -->
     <section class="process" id="process">
         <div class="container">
-            <h2 class="section-title">Meu Processo</h2>
-            <p style="font-size: 1.2rem; max-width: 800px; margin-bottom: 60px; color: #94a3b8;">Como freelancer, valorizo a transparência e a colaboração. Meu processo é projetado para garantir que cada projeto seja uma experiência positiva e produtiva para meus clientes.</p>
+            <h2 class="section-title">Como Trabalho</h2>
+            <p style="font-size: 1.2rem; max-width: 800px; margin-bottom: 60px; color: #94a3b8;">Processo transparente e colaborativo focado em entender sua visão e entregar exatamente o que você precisa.</p>
             
             <div class="process-steps">
                 <div class="process-step">
                     <div class="step-number">1</div>
-                    <h3>Consulta & Briefing</h3>
-                    <p>Conversa inicial para entender sua visão, objetivos e requisitos do projeto.</p>
+                    <h3>Briefing & Referências</h3>
+                    <p>Conversa inicial para entender o projeto, objetivos, tom e referências visuais. Definição clara de prazos e entregáveis.</p>
                 </div>
                 
                 <div class="process-step">
                     <div class="step-number">2</div>
-                    <h3>Planejamento & Storyboard</h3>
-                    <p>Criação de um plano detalhado e storyboard visual para aprovação.</p>
+                    <h3>Pré-edição & Estrutura</h3>
+                    <p>Organização do material, seleção das melhores takes e construção da estrutura narrativa do vídeo.</p>
                 </div>
                 
                 <div class="process-step">
                     <div class="step-number">3</div>
-                    <h3>Produção & Edição</h3>
-                    <p>Execução do projeto com updates regulares e possibilidade de feedback contínuo.</p>
+                    <h3>Edição Completa</h3>
+                    <p>Edição principal com cortes, transições, motion graphics, color grading e mixagem de áudio profissional.</p>
                 </div>
                 
                 <div class="process-step">
                     <div class="step-number">4</div>
                     <h3>Revisões & Entrega</h3>
-                    <p>Revisões ilimitadas até sua total satisfação, seguida da entrega final em todos os formatos necessários.</p>
+                    <p>Revisões com base no seu feedback até a aprovação final. Entrega em todos os formatos necessários para suas plataformas.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Seção Contato -->
+    <!-- Seção Contato - FORMULÁRIO COM EMAILJS -->
     <section class="contact" id="contact">
         <div class="container">
             <h2 class="section-title">Vamos Conversar</h2>
             
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3>Pronto para Transformar Sua Ideia em Vídeo?</h3>
-                    <p>Como freelancer, ofereço um serviço direto, personalizado e focado em resultados. Vamos conversar sobre seu projeto e como posso ajudar a trazê-lo à vida.</p>
+                    <h3>Pronto para Melhorar Seus Vídeos?</h3>
+                    <p>Vamos discutir seu projeto, entender suas necessidades e criar um plano de edição que eleve a qualidade do seu conteúdo.</p>
                     
                     <div class="contact-details">
                         <div class="contact-item">
@@ -1363,7 +1330,7 @@
                             </div>
                             <div>
                                 <h4>Email</h4>
-                                <p>robertoaugustofl@gmail.com</p>
+                                <p>robertoaugusto12freelancer@gmail.com</p>
                             </div>
                         </div>
                         
@@ -1373,7 +1340,7 @@
                             </div>
                             <div>
                                 <h4>Telefone/WhatsApp</h4>
-                                <p>+55 89 988069214</p>
+                                <p>+55 89 98806-9214</p>
                             </div>
                         </div>
                         
@@ -1383,37 +1350,41 @@
                             </div>
                             <div>
                                 <h4>Atendimento</h4>
-                                <p>Remoto - Atendo clientes em todo o Brasil e exterior</p>
+                                <p>100% remoto - Atendo todo o Brasil</p>
                             </div>
                         </div>
                     </div>
                     
                     <div style="margin-top: 40px;">
-                        <h4 style="margin-bottom: 20px;">Disponibilidade para Freelance:</h4>
+                        <h4 style="margin-bottom: 20px;">Disponibilidade:</h4>
                         <div style="display: inline-block; padding: 10px 25px; background: rgba(16, 185, 129, 0.2); color: #10b981; border-radius: 50px; font-weight: 600;">
-                            <i class="fas fa-circle" style="font-size: 0.8rem; margin-right: 8px;"></i> Disponível para novos projetos
+                            <i class="fas fa-circle" style="font-size: 0.8rem; margin-right: 8px;"></i> Aceitando novos projetos
                         </div>
                     </div>
                 </div>
                 
+                <!-- FORMULÁRIO COM EMAILJS -->
                 <form class="contact-form" id="contact-form">
                     <div class="form-group">
-                        <input type="text" placeholder="Seu Nome" required>
+                        <input type="text" id="nome" name="nome" placeholder="Seu Nome" required>
                     </div>
                     
                     <div class="form-group">
-                        <input type="email" placeholder="Seu Email" required>
+                        <input type="email" id="email" name="email" placeholder="Seu Email" required>
                     </div>
                     
                     <div class="form-group">
-                        <input type="text" placeholder="Tipo de Projeto">
+                        <input type="text" id="assunto" name="assunto" placeholder="Assunto/Tipo de Projeto">
                     </div>
                     
                     <div class="form-group">
-                        <textarea placeholder="Conte-me sobre seu projeto, prazos e orçamento..." required></textarea>
+                        <textarea id="mensagem" name="mensagem" placeholder="Conte-me sobre seu projeto, prazos, orçamento..." required></textarea>
                     </div>
                     
-                    <button type="submit" class="cta-button" style="width: 100%;">
+                    <!-- Status do envio -->
+                    <div class="form-status" id="form-status"></div>
+                    
+                    <button type="submit" class="cta-button" style="width: 100%;" id="submit-button">
                         <i class="fas fa-paper-plane"></i> Enviar Mensagem
                     </button>
                 </form>
@@ -1429,13 +1400,13 @@
                     <div class="logo">
                         Roberto Augusto<span class="logo-dot"></span>
                     </div>
-                    <p>Editor de vídeo freelancer especializado em criar conteúdo visual impactante que conta histórias e gera resultados. Trabalho direto com clientes para transformar visões em realidade.</p>
+                    <p>Editor de vídeo freelancer com mais de 5 anos de experiência. Especializado em criar conteúdo visual impactante para YouTube e outras plataformas.</p>
                     
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-behance"></i></a>
+                        <a href="https://wa.me/5589988069214" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 
@@ -1443,7 +1414,7 @@
                     <h4>Links</h4>
                     <ul>
                         <li><a href="#home">Início</a></li>
-                        <li><a href="#highlight">Por Que Me Escolher</a></li>
+                        <li><a href="#highlight">Experiência</a></li>
                         <li><a href="#portfolio">Portfólio</a></li>
                         <li><a href="#channels">Canais</a></li>
                         <li><a href="#process">Processo</a></li>
@@ -1454,83 +1425,71 @@
                 <div class="footer-links">
                     <h4>Serviços</h4>
                     <ul>
-                        <li><a href="#portfolio">Edição de Vídeo</a></li>
-                        <li><a href="#portfolio">Motion Graphics</a></li>
-                        <li><a href="#portfolio">Vídeos Comerciais</a></li>
-                        <li><a href="#portfolio">Vídeos Corporativos</a></li>
-                        <li><a href="#portfolio">Pós-produção de Áudio</a></li>
+                        <li>Edição para YouTube</li>
+                        <li>Shorts & Vídeos Curtos</li>
+                        <li>Vídeos de Opinião</li>
+                        <li>Gameplay & Entretenimento</li>
+                        <li>Motion Graphics Básico</li>
                     </ul>
                 </div>
                 
                 <div class="footer-links">
-                    <h4>Ferramentas</h4>
+                    <h4>Especialidades</h4>
                     <ul>
-                        <li>Adobe Premiere Pro</li>
-                        <li>After Effects</li>
-                        <li>DaVinci Resolve</li>
-                        <li>Cinema 4D</li>
-                        <li>Audition</li>
+                        <li>Cortes Dinâmicos</li>
+                        <li>Color Grading</li>
+                        <li>Mixagem de Áudio</li>
+                        <li>Transições Criativas</li>
+                        <li>Otimização para Plataformas</li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2026 Roberto Augusto - Editor de Vídeo Freelancer. Todos os direitos reservados.</p>
-                <p style="margin-top: 10px; font-size: 0.85rem;">Desenvolvido com paixão por criação visual e inovação.</p>
+                <p>&copy; 2024 Roberto Augusto - Editor de Vídeo Freelancer. Todos os direitos reservados.</p>
+                <p style="margin-top: 10px; font-size: 0.85rem;">Criado com foco em resultados e qualidade visual.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Dados dos vídeos do YouTube - você só precisa adicionar os IDs dos vídeos aqui
+        // Inicializar EmailJS com suas credenciais
+        // SUBSTITUA ESTES VALORES pelos seus do EmailJS
+        emailjs.init('qKM5zFBJsZDpgEXXc'); // Sua Public Key do EmailJS
+        
+        // Dados dos seus vídeos REAIS
         const videoData = [
             {
-                id: "dQw4w9WgXcQ", // ID do vídeo do YouTube
-                title: "Edição Cinematográfica - Curta Metragem",
-                description: "Edição completa de curta metragem com color grading profissional e transições criativas.",
-                client: "Filme Independente",
-                duration: "5:42",
-                views: "125K"
+                id: "XdGDaf4cTG4", // Short de curiosidades
+                title: "Short de Curiosidades",
+                description: "Edição dinâmica para formato Short/Reels com ritmo acelerado, textos animados e transições criativas.",
+                client: "Conteúdo Próprio",
+                duration: "0:58",
+                views: "Shorts"
             },
             {
-                id: "9bZkp7q19f0", // ID do vídeo do YouTube
-                title: "Campanha Publicitária - TechBrand",
-                description: "Vídeo publicitário para lançamento de produto com motion graphics e efeitos visuais.",
-                client: "TechBrand",
-                duration: "2:18",
-                views: "350K"
+                id: "GFFR64MF45I", // Vídeo de exposed
+                title: "Vídeo de Exposed/Opinião",
+                description: "Edição para conteúdo de opinião com estrutura narrativa, uso estratégico de cortes e elementos visuais de apoio.",
+                client: "Conteúdo Próprio",
+                duration: "10:42",
+                views: "Opinião"
             },
             {
-                id: "kJQP7kiw5Fk", // ID do vídeo do YouTube
-                title: "Vídeo Corporativo - Apresentação Anual",
-                description: "Edição de vídeo institucional com gráficos animados e transições dinâmicas.",
-                client: "GlobalCorp",
+                id: "30FrE0O0ueY", // Sobre cursos/treta
+                title: "Não se Fazem Mais Cursos Como Antigamente",
+                description: "Edição para conteúdo de discussão/controvérsia com pacing controlado, ênfase em pontos-chave e elementos gráficos.",
+                client: "Conteúdo Próprio",
                 duration: "8:15",
-                views: "85K"
+                views: "Discussão"
             },
             {
-                id: "JGwWNGJdvx8", // ID do vídeo do YouTube
-                title: "Vídeo de Moda - Coleção Verão",
-                description: "Edição fashion com color grading cinematográfico e sincronização musical perfeita.",
-                client: "FashionLine",
-                duration: "3:45",
-                views: "210K"
-            },
-            {
-                id: "CevxZvSJLk8", // ID do vídeo do YouTube
-                title: "Animação Explicativa - Fintech",
-                description: "Motion graphics para explicar serviços financeiros complexos de forma visual e clara.",
-                client: "Fintech Solutions",
-                duration: "4:22",
-                views: "95K"
-            },
-            {
-                id: "OPf0YbXqDm0", // ID do vídeo do YouTube
-                title: "Vídeo de Evento - Festival de Música",
-                description: "Aftermovie de festival com edição multicâmera e sincronização com trilha sonora.",
-                client: "MusicFest",
-                duration: "6:30",
-                views: "180K"
+                id: "xTqvJvw7kp4", // Gameplay humor
+                title: "Gameplay de Terror com Humor",
+                description: "Edição para gameplay com foco no humor, timing de cortes para comédia e integração de reações/efeitos sonoros.",
+                client: "Conteúdo Próprio",
+                duration: "15:22",
+                views: "Gaming/Humor"
             }
         ];
         
@@ -1543,15 +1502,13 @@
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 
-                // Posição aleatória
                 const x = Math.random() * 100;
                 const y = Math.random() * 100;
-                const z = Math.random() * 200 - 100; // Profundidade 3D
+                const z = Math.random() * 200 - 100;
                 const size = Math.random() * 6 + 2;
                 const duration = Math.random() * 20 + 10;
                 const delay = Math.random() * 5;
                 
-                // Aplicar propriedades 3D
                 particle.style.left = `${x}%`;
                 particle.style.top = `${y}%`;
                 particle.style.width = `${size}px`;
@@ -1559,7 +1516,6 @@
                 particle.style.transform = `translateZ(${z}px)`;
                 particle.style.animation = `floatParticle ${duration}s ${delay}s infinite linear`;
                 
-                // Cor gradiente aleatória
                 const colors = ['#6366f1', '#8b5cf6', '#ec4899', '#3b82f6', '#06b6d4'];
                 const color = colors[Math.floor(Math.random() * colors.length)];
                 particle.style.backgroundColor = color;
@@ -1568,7 +1524,6 @@
                 particlesContainer.appendChild(particle);
             }
             
-            // Adicionar animação de flutuação
             const style = document.createElement('style');
             style.textContent = `
                 @keyframes floatParticle {
@@ -1606,7 +1561,7 @@
                         <div class="video-meta">
                             <span><i class="fas fa-user"></i> ${video.client}</span>
                             <span><i class="fas fa-clock"></i> ${video.duration}</span>
-                            <span><i class="fas fa-eye"></i> ${video.views}</span>
+                            <span><i class="fas fa-tag"></i> ${video.views}</span>
                         </div>
                     </div>
                 `;
@@ -1658,7 +1613,7 @@
                 <div style="display: flex; gap: 20px; margin-top: 15px; color: #94a3b8;">
                     <div><i class="fas fa-user"></i> ${video.client}</div>
                     <div><i class="fas fa-clock"></i> ${video.duration}</div>
-                    <div><i class="fas fa-eye"></i> ${video.views} visualizações</div>
+                    <div><i class="fas fa-tag"></i> ${video.views}</div>
                 </div>
             `;
             
@@ -1673,7 +1628,7 @@
             const videoContainer = document.getElementById('modal-video-container');
             
             modal.classList.remove('active');
-            videoContainer.innerHTML = ''; // Remover iframe para parar o vídeo
+            videoContainer.innerHTML = '';
             document.body.style.overflow = 'auto';
         });
         
@@ -1684,9 +1639,81 @@
                 const videoContainer = document.getElementById('modal-video-container');
                 
                 modal.classList.remove('active');
-                videoContainer.innerHTML = ''; // Remover iframe para parar o vídeo
+                videoContainer.innerHTML = '';
                 document.body.style.overflow = 'auto';
             }
+        });
+        
+        // FORMULÁRIO COM EMAILJS - FUNCIONAL
+        const contactForm = document.getElementById('contact-form');
+        const formStatus = document.getElementById('form-status');
+        const submitButton = document.getElementById('submit-button');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Mostrar loading
+            const originalText = submitButton.innerHTML;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+            submitButton.disabled = true;
+            formStatus.style.display = 'none';
+            
+            // Coletar dados do formulário
+            const formData = {
+                nome: document.getElementById('nome').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('assunto').value || 'Contato do Portfólio',
+                message: document.getElementById('mensagem').value
+            };
+            
+            // Configurações do EmailJS - SUBSTITUA COM SEUS DADOS
+            const serviceID = 'service_mv5fxia'; // Seu Service ID
+            const templateID = 'template_01jwshi'; // Seu Template ID
+            
+            // Enviar email usando EmailJS
+    emailjs.send(serviceID, templateID, {
+        name: nome,                // IMPORTANTE: use 'name' para o nome
+        email: email,              // IMPORTANTE: use 'email' para o email
+        subject: assunto,          // IMPORTANTE: use 'subject' para o assunto
+        message: mensagem,         // IMPORTANTE: use 'message' para a mensagem
+        from_name: nome,           // Opcional, para o remetente
+        from_email: email          // Opcional, para o email do remetente
+    })
+            .then(function(response) {
+                // Sucesso
+                formStatus.textContent = '✅ Mensagem enviada com sucesso! Entrarei em contato em breve.';
+                formStatus.className = 'form-status success';
+                formStatus.style.display = 'block';
+                
+                // Resetar formulário
+                contactForm.reset();
+                
+                // Scroll para mostrar mensagem de sucesso
+                formStatus.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                
+                // Restaurar botão
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+                
+                // Esconder mensagem após 5 segundos
+                setTimeout(() => {
+                    formStatus.style.display = 'none';
+                }, 5000);
+            })
+            .catch(function(error) {
+                // Erro
+                console.error('Erro ao enviar:', error);
+                formStatus.textContent = '❌ Erro ao enviar mensagem. Tente novamente ou entre em contato diretamente por WhatsApp.';
+                formStatus.className = 'form-status error';
+                formStatus.style.display = 'block';
+                
+                // Restaurar botão
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+                
+                // Scroll para mostrar mensagem de erro
+                formStatus.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            });
         });
         
         // Navegação responsiva
@@ -1716,26 +1743,6 @@
             } else {
                 header.classList.remove('scrolled');
             }
-        });
-        
-        // Form submission
-        const contactForm = document.getElementById('contact-form');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Simulação de envio
-            const button = contactForm.querySelector('button');
-            const originalText = button.innerHTML;
-            button.innerHTML = '<i class="fas fa-check"></i> Mensagem Enviada!';
-            button.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-            
-            setTimeout(() => {
-                button.innerHTML = originalText;
-                button.style.background = '';
-            }, 3000);
-            
-            // Reset do formulário
-            contactForm.reset();
         });
         
         // Smooth scroll para links internos
@@ -1775,27 +1782,6 @@
             createParticles();
             createVideoElements();
             setTimeout(typeWriter, 500);
-            
-            // Adicionar efeito de parallax nas partículas
-            window.addEventListener('mousemove', (e) => {
-                const particles = document.querySelectorAll('.particle');
-                const mouseX = e.clientX / window.innerWidth;
-                const mouseY = e.clientY / window.innerHeight;
-                
-                particles.forEach(particle => {
-                    const x = (mouseX - 0.5) * 20;
-                    const y = (mouseY - 0.5) * 20;
-                    
-                    const currentTransform = particle.style.transform;
-                    const newTransform = currentTransform.replace(/translateX\([^)]+\)/g, `translateX(${x}px)`).replace(/translateY\([^)]+\)/g, `translateY(${y}px)`);
-                    
-                    if (!currentTransform.includes('translateX')) {
-                        particle.style.transform += ` translateX(${x}px) translateY(${y}px)`;
-                    } else {
-                        particle.style.transform = newTransform;
-                    }
-                });
-            });
         });
     </script>
 </body>
