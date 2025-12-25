@@ -1659,26 +1659,28 @@
             formStatus.style.display = 'none';
             
             // Coletar dados do formulário
-            const formData = {
-                nome: document.getElementById('nome').value,
-                email: document.getElementById('email').value,
-                subject: document.getElementById('assunto').value || 'Contato do Portfólio',
-                message: document.getElementById('mensagem').value
-            };
-            
-            // Configurações do EmailJS - SUBSTITUA COM SEUS DADOS
-            const serviceID = 'service_mv5fxia'; // Seu Service ID
-            const templateID = 'template_01jwshi'; // Seu Template ID
-            
-            // Enviar email usando EmailJS
-    emailjs.send(serviceID, templateID, {
-        name: nome,                // IMPORTANTE: use 'name' para o nome
-        email: email,              // IMPORTANTE: use 'email' para o email
-        subject: assunto,          // IMPORTANTE: use 'subject' para o assunto
-        message: mensagem,         // IMPORTANTE: use 'message' para a mensagem
-        from_name: nome,           // Opcional, para o remetente
-        from_email: email          // Opcional, para o email do remetente
-    })
+// Coletar dados do formulário
+const nome = document.getElementById('nome').value;
+const email = document.getElementById('email').value;
+const assunto = document.getElementById('assunto').value || 'Contato do Portfólio';
+const mensagem = document.getElementById('mensagem').value;
+
+// Configurações do EmailJS
+const serviceID = 'service_mv5fxia';
+const templateID = 'template_01jwshi';
+
+// Primeiro, vamos testar se os dados estão sendo coletados
+console.log('Dados coletados:', { nome, email, assunto, mensagem });
+
+// Enviar email usando EmailJS - COM AS VARIÁVEIS CORRETAS
+emailjs.send(serviceID, templateID, {
+    name: nome,                // Agora 'nome' existe
+    email: email,              // Agora 'email' existe
+    subject: assunto,          // Agora 'assunto' existe
+    message: mensagem,         // Agora 'mensagem' existe
+    from_name: nome,
+    from_email: email
+})
             .then(function(response) {
                 // Sucesso
                 formStatus.textContent = '✅ Mensagem enviada com sucesso! Entrarei em contato em breve.';
