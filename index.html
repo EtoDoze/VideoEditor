@@ -1086,6 +1086,133 @@
                 padding: 20px;
             }
         }
+
+        /* ====== PRICING ====== */
+/* ===== PRICING ===== */
+.pricing {
+    padding: 120px 0;
+    background: rgba(2, 6, 23, 0.95);
+}
+
+.pricing-subtitle {
+    max-width: 700px;
+    color: #94a3b8;
+    margin-bottom: 60px;
+    font-size: 1.15rem;
+}
+
+.pricing-category {
+    margin: 50px 0 20px;
+    font-size: 1.6rem;
+}
+
+.pricing-table {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.pricing-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 20px;
+    padding: 20px 24px;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.pricing-item:last-child {
+    border-bottom: none;
+}
+
+.pricing-item span {
+    color: #cbd5f5;
+}
+
+.pricing-item strong {
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.pricing-note {
+    margin-top: 60px;
+    text-align: center;
+    color: #94a3b8;
+}
+
+.pricing-note a {
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+    .pricing-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .pricing-item strong {
+        margin-top: 5px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .hero {
+        height: auto;
+        padding-bottom: 80px;
+    }
+
+    .hero-content {
+        text-align: left;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    .price-card.featured {
+        transform: none;
+    }
+
+    .video-meta {
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start;
+    }
+
+    .contact-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .contact-icon {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.9rem;
+    }
+
+    .price {
+        font-size: 2.5rem;
+    }
+
+    .cta-button,
+    .secondary-button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -1312,6 +1439,82 @@
             </div>
         </div>
     </section>
+
+<!-- Seção Preços -->
+<section class="pricing" id="pricing">
+    <div class="container">
+        <h2 class="section-title">Serviços & Preços</h2>
+        <p class="pricing-subtitle">
+            Valores base. O orçamento final pode variar conforme a complexidade e frequência.
+        </p>
+
+        <!-- PREÇO POR VÍDEO -->
+        <h3 class="pricing-category">🎬 Preço por Vídeo</h3>
+        <div class="pricing-table">
+            <div class="pricing-item">
+                <span>Vídeo simples</span>
+                <span>Até 10 minutos</span>
+                <strong>R$120</strong>
+            </div>
+            <div class="pricing-item">
+                <span>Vídeo médio</span>
+                <span>10 a 20 minutos</span>
+                <strong>R$160</strong>
+            </div>
+            <div class="pricing-item">
+                <span>Vídeo longo</span>
+                <span>Acima de 20 minutos</span>
+                <strong>R$200</strong>
+            </div>
+        </div>
+
+        <!-- SHORTS -->
+        <h3 class="pricing-category">📱 Shorts, Reels e Cortes</h3>
+        <div class="pricing-table">
+            <div class="pricing-item">
+                <span>Short simples</span>
+                <span>Corte direto</span>
+                <strong>R$20</strong>
+            </div>
+            <div class="pricing-item">
+                <span>Short editado</span>
+                <span>Legenda + efeitos</span>
+                <strong>R$40</strong>
+            </div>
+            <div class="pricing-item">
+                <span>Pacote com 10 shorts</span>
+                <span>Alta conversão</span>
+                <strong>R$350</strong>
+            </div>
+        </div>
+
+        <!-- PACOTES MENSAIS -->
+        <h3 class="pricing-category">📦 Pacotes Mensais</h3>
+        <div class="pricing-table">
+            <div class="pricing-item">
+                <span>Básico</span>
+                <span>4 vídeos por mês</span>
+                <strong>R$400</strong>
+            </div>
+            <div class="pricing-item">
+                <span>Padrão</span>
+                <span>8 vídeos por mês</span>
+                <strong>R$700</strong>
+            </div>
+            <div class="pricing-item">
+                <span>Avançado</span>
+                <span>12 vídeos por mês</span>
+                <strong>R$1.000</strong>
+            </div>
+        </div>
+
+        <p class="pricing-note">
+            Precisa de algo personalizado ou vídeos frequentes?  
+            <a href="#contact">Entre em contato</a>.
+        </p>
+    </div>
+</section>
+
 
     <!-- Seção Contato - FORMULÁRIO COM EMAILJS -->
     <section class="contact" id="contact">
